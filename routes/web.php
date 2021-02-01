@@ -28,7 +28,7 @@ Route::get('posts/{slug}', 'PostController@show')->name('posts.show');
  * Rotte per login/ Registrazione - pt.protetta
  */
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 /**
  * Rotte pagine per utenti loggati
