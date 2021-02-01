@@ -30,7 +30,7 @@
                             <a href="" class="btn btn-success">Show</a>
                         </td>
                         <td>
-                            <a href="" class="btn btn-primary">Edit</a>
+                            <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-primary">Edit</a>
                         </td>
                         <td>
                             {{-- FORM --}}

@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>My Blog</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -58,7 +58,7 @@
                                 <a href="{{ route('admin.home') }}" class="nav-link">Dashboard</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="{{ route('admin.posts.index') }}" class="nav-link">Blog</a>
+                                <a href="{{ route('admin.posts.index') }}" class="nav-link">My Posts</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a href="{{ route('admin.posts.create') }}" class="nav-link">New Post</a>

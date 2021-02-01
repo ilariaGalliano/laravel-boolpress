@@ -46,6 +46,7 @@ class PostController extends Controller
     {
         $data = $request->all();
 
+        // Validazione
         $request->validate([
             'title' => 'required',
             'body' => 'required',
@@ -85,9 +86,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        return view('admin.posts.edit');
     }
 
     /**
@@ -97,9 +98,24 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Post $post)
     {
-        //
+        $data = $request->all();
+
+        // Validazione
+        $request->validate([
+            'title' => 'required',
+            'body' => 'required',
+        ]);
+
+        $data['slug'] = Str::slug($data['title'], '-');
+
+        $updated = $post->update($data); // fillable
+
+        if($updated){
+            return redirect()->route('posts.show', $post->slug);
+        }
+        
     }
 
     /**
