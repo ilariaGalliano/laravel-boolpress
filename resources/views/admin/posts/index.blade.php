@@ -4,6 +4,12 @@
 <div class="container">
    <h1>Your Posts</h1>
 
+   @if (session('deleted'))
+        <div class="alert alert-danger">
+            {{ session('deleted') }} Successfully deleted
+        </div>
+   @endif
+
    {{-- Metodo di blade isEmpty per capire se ha o no entità --}}
    @if ($posts->isEmpty())
         <p>No posts yet.</p>
@@ -34,7 +40,12 @@
                         </td>
                         <td>
                             {{-- FORM --}}
-                            <a href="" class="btn btn-danger">Delete</a>
+                            <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                        
+                                <input class="btn btn-danger" type="submit" value="Delete">
+                            </form>
                         </td>
                     </tr>
                 @endforeach
